@@ -8,7 +8,7 @@ public class DetailService implements ICrudService<Detail> {
 
     @Override
     public void Create(Detail entity) {
-        String sql = "";
+        String sql = "Insert into detail (id, name, attributes) values (null, " + Detail.class.getName() + ")";
     }
 
     @Override

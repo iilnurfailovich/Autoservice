@@ -4,21 +4,27 @@ import java.sql.*;
 
 public class DBStatementService extends Exception {
 
-    Statement statement = null;
-    ResultSet result = null;
+    private Statement statement = null;
+    private ResultSet result = null;
+
+    DBConnectionService db = new DBConnectionService();
 
     public int executeUpdate(String sql) {
-        int executeUpdate = 0;
+        int rofUpdate = 0;
         try {
-            statement.getConnection().createStatement();
-            result = statement.executeQuery(sql);
+            statement = db.getConnection().createStatement();
+            rofUpdate = statement.executeUpdate(sql);
 
         } catch (Exception e) {
             e.printStackTrace();
-
-
+        } finally {
+            try {
+                closeExecuteUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return executeUpdate;
+        return rofUpdate;
     }
 
     public void closeExecuteUpdate() {

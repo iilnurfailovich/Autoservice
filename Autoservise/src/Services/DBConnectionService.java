@@ -10,8 +10,8 @@ public class DBConnectionService extends Exception {
     private static String url;
     private static String username;
     private static String password;
+    private  Connection connection;
 
-    private Connection connection;
 
     public static void InitSettings(String URL, String Username, String Password) {
         url = URL;
@@ -19,7 +19,7 @@ public class DBConnectionService extends Exception {
         password = Password;
     }
 
-    public Connection getConnection() {
+    public  Connection getConnection() {
         //"jdbc:mysql://localhost:3306/names";
 
         Properties dbInfo = new Properties();
